@@ -1,0 +1,74 @@
+<!DOCTYPE html>	
+    <html lang="es">
+
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../css/estilos.css">
+
+        <title>Drift World: Registro</title>
+        
+         </head>
+
+         <header>
+
+            <div style="width:15%;float:left; background-color:rgb(255, 238, 0);padding-left: 1.5em; height: 4.2em;">
+                <img id="logo_cabecera"   style="width:9em;height:4em;" src="../img/logo4.jpg" alt="" > </img>
+              </div>
+            
+              <div style="width:55%;float:left;background-color:rgb(255, 238, 0);height: 4.2em;" >
+                <center><h1>Drift World</h1></center>
+                </div>
+
+                <div style="background-color: rgb(255, 238, 0);margin-bottom: 0.5em;height: 4.2em;float:left;">
+                    <span id="usuarioLogeado"> <b>Usuario: </b>  Prueba  </span> 
+                    <span> <b> Registro</b></span>
+                    <img id="btnLogout" onclick="signoutUser();"  src="../img/rcb.png" alt=""  style="width:2em;height: 2em;padding-top: 1.3em;padding-left: 1em;" > </img>
+                 </div>
+              </div>
+            </br> 
+             </br> 
+            </br>
+          </header> 
+
+
+        <body id="body">
+        </br>
+            <div>
+            <form action="/service.php">
+                <label style="color:white" for="nombre">Nombre de Usuario:</label><br><br>
+                <input type="text" id="nombre" name="nombre" value="Nombre"><br><br>
+                <label style="color:white" for="pass">Contraseña:</label><br><br>
+                <input type="password" id="pass" name="pass" value="Contraseña"><br><br>
+                <label style="color:white" for="correo">Correo Electronico:</label><br><br>
+                <input type="text" id="correo" name="correo" value="example@gmail.com"></br></br>
+                <label style="color:white" for="nombre">Nombre:</label><br><br>
+                <input type="text" id="nombre" name="nombre" value="Nombre"><br><br>
+                <label style="color:white" for="apellido">Apellidos:</label><br><br>
+                <input type="text" id="apellido" name="apellido" value="Apellidos"><br><br>
+                <label style="color:white" for="fecha">Fecha de Nacimiento:</label><br><br>
+                <input type="text" id="fecha" name="fecha" value="xx/xx/xxxx"><br><br>
+                <label style="color:white" for=”sexo”>Elija su sexo: </label><br><br>
+                <input type="checkbox" id="hombre" name="sexo" value="hombre">
+                <label style="color:white" for=”hombre”>Hombre</label>
+                <input type="checkbox" id=”mujer” name=”sexo” value=”mujer”>
+                <label style="color:white" for=”mujer”>Mujer</label><br><br>
+                <input type="checkbox" id=”terminos” name=”termino” value=”termino” required>
+                <label style="color:white" for=”termino”>Acepto los terminos de accesso</label><br><br>
+                <input type="checkbox" id=”publi” name=”publi” value=”publi”>
+                <label style="color:white" for=”publi”>Acepto que me llegue publicidad relacionionada</label><br><br>
+                <input type="submit" value="Registrarse">               
+              </form> 
+            </div>
+
+          </br></br>
+
+          <a style="color:white; text-decoration: none; font-size: 1.5em;"href="../index.html">Volver a la pagina principal</a>
+     
+         </br></br></br></br>
+         <footer id="footer"> Aythami Vargas Coruña 1º ASIR </footer> 
+
+            </body>
+            </html>
+            

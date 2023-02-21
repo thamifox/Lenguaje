@@ -1,0 +1,320 @@
+<!DOCTYPE html>	
+    <html lang="es">
+
+<!-- Aquí tenemos el head de la página con el idioma, lenguaje utilizado y enlazado al estilo -->
+
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="charset=UTF-8" /> 
+        <meta name="description" content="DriftWorld">
+        <meta name="keywords" content="HTML5, CSS3">
+       
+       <!-- vinculo a la pagina de estilos -->
+
+        <link rel="stylesheet" href="css/estilos.css">
+        
+<!-- Enlace a mi pagina de funciones-->
+
+        <script src="scripts/js/login.js"> </script>
+
+<!--Enlace al archivo jquery-->
+
+        <script src="scripts/jquery/jquery.js"></script>
+            
+        <title>Drift World</title>
+        
+         </head>
+
+            <body >
+
+                <script type="text/javascript">
+   
+                    console.log("Inicio de consola:"); 
+                   
+                // funcion que se dispara cuando la pagina se ha terminado de cargar con Jquery
+
+                    $(document).ready(function(){    
+                        $('#div_validacion').hide();
+                        $('#btn_logout').hide();
+                        $('#div_registro').hide();
+                        $('#eventos').hide();
+                        $('#descripcion').hide();
+                        alert('Pagina Lista');
+                
+                        var validado = checkCookie("username_thami");
+                        
+                        if(validado==true){
+                          $('#perfil').show();
+                        } else{
+                          $('#perfil').hide();
+                        }
+                          
+                
+                    });
+
+                   /* var httpRequest;
+	if (window.XMLHttpRequest)
+	{
+		//El explorador implementa la interfaz de forma nativa
+		httpRequest = new XMLHttpRequest();
+	} 
+	else if (window.ActiveXObject)
+	{
+		//El explorador permite crear objetos ActiveX para exploradores antiguos
+		try {
+			httpRequest = new ActiveXObject("MSXML2.XMLHTTP");
+		} catch (e) {
+			try {
+				httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {}
+		}
+	}
+	if (!httpRequest)
+	{
+		alert("No ha sido posible crear una instancia de XMLHttpRequest");
+	}
+ 
+
+// Abrimos el archivo que esta alojado en el servidor usuarios.xml
+httpRequest.open("GET","docsup/usuarios.xml",false);
+httpRequest.send();
+ 
+// Obtenemos un objeto XMLDocument con el contenido del archivo xml del servidor
+xmlDoc=httpRequest.responseXML;
+console.log(httpRequest.responseText);
+
+ 
+
+var usuarios=xmlDoc.getElementsByTagName("usuario");
+console.log(usuarios);
+ 
+// Hacemos un bucle por todos los elementos usuarios
+for(var i=0;i<usuarios.length;i++)
+{
+	// Del elemento usuarios, obtenemos del primer elemento denominado "user" y sel segundo llamado "pwd"
+	user=usuarios[i].getElementsByTagName("user")[0].childNodes[0].nodeValue;
+ 	pwd=usuarios[i].getElementsByTagName("pwd")[0].childNodes[0].nodeValue;
+ 
+	document.write("<div>");
+		document.write("<span>");
+		document.write(user);
+		document.write("</span><span>");
+		document.write(pwd);
+		document.write("</span>");
+	document.write("</div>"); 
+}
+
+Este codigo fue cambiado a mi archivo de funciones
+       */                                     
+                  </script>
+
+                  <!-- Esto es el header, el cual contendrá el logo, el usuario, el registro, el inicio de sesión y el botón (el cual tendrá un uso mas adelante) -->
+
+         <header>
+
+            <div style="width:15%;float:left; background-color:rgb(255, 238, 0);padding-left: 1.5em; height: 4.2em;">
+                <img id="logo_cabecera"   style="width:9em;height:4em;" src="img/logo4.jpg" alt="" > </img>
+              </div>
+            
+              <div style="width:55%;float:left;background-color:rgb(255, 238, 0);height: 4.2em;" >
+                <center><h1 id="h11">Drift World</h1></center>
+                </div>
+
+                <div style="background-color: rgb(255, 238, 0);margin-bottom: 0.5em;height: 4.2em;float:left;">
+                    <b>Usuario: </b>
+                    <span id="usuarioLogeado"> Offline  </span>
+                    <button id="b1" onclick=" $('#div_validacion').show(); "  alt="Iniciar sesiòn">
+                       Login
+                   
+                    </button>
+                    <button id="b1" onclick=" $('#div_registro').show(); "  alt="Registro">
+                        Registro
+                    
+                     </button>
+                    <!--<a href="form/registro.html"></a><span> <b> Registro</b></span></a>-->
+                    <img  id="btn_login" src="img/rcb.png"   style="width:2em;height: 2em;padding-top: 1.3em;padding-left: 1em;" > </img>
+                    <img  id="btn_logout" src="img/logo3.jpg" style="width:3em;height: 2.5em;padding-top: 1.3em;padding-left: 1em;" onclick="$('#usuarioLogeado').html('Offline'); $('#btn_logout').hide(); $('#btn_login').show();"  alt="Salir de la sesiòn" > </img> 
+                 </div>
+
+                 <!--Este es el formulario de inicio de sesion-->
+
+                 <div id="div_validacion" >
+
+                 <form name="loginForm"> 
+                    <label for="email" style="font-size:1.5em; font-weight:bold; color: rgb(255, 0, 0); padding: 1em;">Usuario (correo): </label>
+                    <input type="text" id="email" name="email" class="form-control" placeholder="ejemplo@gmail.com"> <br><br><br>
+                    <label for="password" style="font-size:1.5em; font-weight:bold; color: rgb(255, 0, 0); padding: 1em;">Contraseña:</label>
+                    <input type="password" id="password"  name="password"  class="form-control" placeholder="Password" required>
+                    <input  type="submit" value="Iniciar Sesion"  onclick="comprobarUsuario($('#email').val(), $('#password').val()); "
+                   ></input>  
+            
+               </form>
+            </div>
+
+             <!--Este es el formulario de Registro-->
+
+             <div id="div_registro">
+
+                <form action="/service.php">
+                    <label style="color:white" for="nombre">Nombre de Usuario:</label><br><br>
+                    <input type="text" id="nombre" name="nombre" value="Nombre"><br><br>
+                    <label style="color:white" for="pass">Contraseña:</label><br><br>
+                    <input type="password" id="pass" name="pass" value="Contraseña"><br><br>
+                    <label style="color:white" for="correo">Correo Electronico:</label><br><br>
+                    <input type="text" id="correo" name="correo" value="example@gmail.com"></br></br>
+                    <label style="color:white" for="nombre">Nombre:</label><br><br>
+                    <input type="text" id="nombre" name="nombre" value="Nombre"><br><br>
+                    <label style="color:white" for="apellido">Apellidos:</label><br><br>
+                    <input type="text" id="apellido" name="apellido" value="Apellidos"><br><br>
+                    <label style="color:white" for="fecha">Fecha de Nacimiento:</label><br><br>
+                    <input type="text" id="fecha" name="fecha" value="xx/xx/xxxx"><br><br>
+                    <label style="color:white" for=”sexo”>Elija su sexo: </label><br><br>
+                    <input type="checkbox" id="hombre" name="sexo" value="hombre">
+                    <label style="color:white" for=”hombre”>Hombre</label>
+                    <input type="checkbox" id=”mujer” name=”sexo” value=”mujer”>
+                    <label style="color:white" for=”mujer”>Mujer</label><br><br>
+                    <input type="checkbox" id=”terminos” name=”termino” value=”termino” required>
+                    <label style="color:white" for=”termino”>Acepto los terminos de accesso</label><br><br>
+                    <input type="checkbox" id=”publi” name=”publi” value=”publi”>
+                    <label style="color:white" for=”publi”>Acepto que me llegue publicidad relacionionada</label><br><br>
+                    <input type="submit" value="Registrarse">               
+                  </form> 
+
+             </div>
+
+              </div>
+            
+            </br> </br> </br>   
+            
+               <!--Termina el Header  href="proyecto3.html" target="_blank" href="descripcion.html" target="_blank"-->
+
+         </header>    
+
+            </br></br>
+            <div style=float:left padding-left="6em">
+                    <a><img src="img/d1.jpg" width="250em" height="150em" onclick="$('#eventos').show(); "  alt="Eventos" ></img></a>
+                <p style="color:rgb(255, 208, 0);" align="center"  >Eventos</p>
+            </div>
+            <div style=float:left padding-left="6em">
+                <a href="proyecto2.html" target="_blank"><img src="img/d2.jpg" width="250em" height="150em"   ></img></a>
+                <p style="color:rgb(255, 208, 0);" align="center">Coches</p>
+            </div>
+            <div style=float:left padding-left="6em">
+                <a href="index.html"><img src="img/d3.jpg" width="250em" height="150em" ></img></a>
+                <p style="color:rgb(255, 208, 0);" align="center" >Inicio</p>
+            </div>
+            <div style=float:left padding-left="6em">
+                <a ><img src="img/86a.jpg" width="250em" height="150em" onclick="$('#descripcion').show(); "  alt="descripcion" ></img></a>
+                <p style="color:rgb(255, 208, 0);" align="center" >Descripcion</p>
+            </div>
+
+            <div style=float:left padding-left="6em">
+                <a href="docsup/drift.pdf"  target="download"><img src="img/s45.jpg" width="250em" height="150em" ></img></a>
+                <p style="color:rgb(255, 208, 0)">Descarga una guia sobre que es el Drift</p>
+            </div>
+            <div>
+                <a href="java.html"><img src="img/s45.jpg" width="250em" height="150em" ></img></a>
+                <p style="color:rgb(255, 208, 0)">Ejemplos de JAVA </p>
+            </div>
+
+            <!--Contenido de Eventos-->
+
+            <div id="eventos">
+
+                <p class="h2index">Eventos de la D1 GP</p>
+
+                <h1 class="h2index">
+                 <a href="https://www.youtube.com/watch?v=jN9w19DSuAI"> <img  style="width:9em;height:4em;" src="img/mini.png"  ></a>
+                 <p style="color:rgb(0, 0, 0);" >2022 D1GP Rd 9 EBISU WEST BATTLE RUN HIGHLIGHT</p>
+                </h1>
+  
+                <h1 class="h2index">
+                  <a href="https://www.youtube.com/watch?v=qNg9wGBYgjk"> <img  style="width:9em;height:4em;" src="img/mini2.png"  ></a>
+                  <p style="color:rgb(0, 0, 0);" >2022 D1GP Rd 9 EBISU WEST SOLO RUN HIGHLIGHT</p>
+                 </h1>
+  
+                 <h1 class="h2index">
+                  <a href="https://www.youtube.com/watch?v=e8hjQq43cr4"> <img  style="width:9em;height:4em;" src="img/mini3.png"  ></a>
+                  <p style="color:rgb(0, 0, 0);" >2022 D1GP Rd 8 EBISU WEST BATTLE RUN HIGHLIGHT</p>
+                 </h1>
+  
+                 <h1 class="h2index">
+                  <a href="https://www.youtube.com/watch?v=7pa2Ux-F4Uc"> <img  style="width:9em;height:4em;" src="img/mini4.png"  ></a>
+                  <p style="color:rgb(0, 0, 0);" >Hiroki VITO | Every 2022 D1GP Battle Runs | Ranked 11</p>
+                 </h1>
+  
+                 <h1 class="h2index">
+                  <a href="https://www.youtube.com/watch?v=mfXvA7YiyuU"> <img  style="width:9em;height:4em;" src="img/mini5.png"  ></a>
+                  <p style="color:rgb(0, 0, 0);" >2022 GRAN TURISMO D1 GRAND PRIX SERIES Rd.4 EBISU</p>
+                 </h1>
+
+                 </div>
+
+             <!--Contenido de Descripcion-->
+
+             <div id="descripcion">
+
+             <h1 style="display:flex;justify-content: center;color:rgb(0, 0, 0);background-color:rgb(229, 255, 0);">Descripcion de la página</h1>
+             <!-- Nuestra sección donde vamos a explicar algo con "p" o "div" con contenidos o por escrito -->
+             <section>
+             <article style ="border:5px; border-color: rgb(229, 255, 0);">               
+             <h2 style="color:white">Mi proyecto parte del mundo del motor en especifico de la modalidad del Drift y en las distintas secciones es estructurado varios coches utilizados y momentos
+             de los cuales han hecho historia en esta modalidad</h2>
+             <ul style="color:white">
+             En mi proyecto de HTML he utilizado distintas etiquetas y estructuras como el "section" , "article" y "p", también he utilizado bloques como "head" y las opciones del "meta", sobre éste último comentaré las etiquetas utilizadas y su función:<br>
+             <li style="color:white"> meta name="keywords": Este elemento de meta, es utilizado para darle mas informacion sobre el contenido de una página a los motores de búsqueda </li>
+             En cuanto a etiquetas, he utilizado "a", "nav", "ul", "li", "div", "span","hx" y "p", según vaya aprendiendo más a estructurar la página insertaré Java<br>
+             <li style="color:white"> meta charset="utf-8": Este elemento de meta, especifica en la codificacion, los carácteres del documento, que incluye casi todos los universales del idioma humano</li>
+             <li style="color:white"> meta name="viewport": Este elemento de meta, especifica el área visible de un sitio web, controlando el ancho de la pagina dependiendo del dispositivo</li>
+             <li style="color:white"> meta http-equiv="Content-Type": Este elemento de meta, sirve para colocar un atributo de nombre y sustituirlo</li>
+             <li style="color:white"> meta name="description": Este elemento de meta, es utilizado para describir el contenido de la web</li>
+             </ul>                             
+                </section>
+                    </article> 
+
+                       <center> <img src="img/descripcion.jpg"></center>
+
+                        </div>
+
+            </div>
+
+        </br></br>
+
+        <!-- Aqui usamos 2 class -->
+
+        <h2 class="h2index"> Bienvenidos a tu pagina de Drift y mundo del motor</h2>
+
+        <h3 class="h3index"> El drifting o drift es un estilo de conducción de vehículos que consiste en «sobrevirar», es decir, derrapar de manera que el vehículo forme un ángulo con la dirección de movimiento. Hacia un lado
+            Como deporte de motor, se convirtió en una disciplina propia a fines de la década de los 1990, con pilotos especialmente entrenados, con automóviles preparados para mantener derrapes controlados a altas velocidades y 
+            campeonatos en los que no se compite por tiempo sino por estilo. La mayoría de coches de drift suelen ser de tracción trasera, pero también pueden ser de tracción integral a las cuatro ruedas. </h3>
+
+             <!-- Aqui usamos 2 ID -->
+
+        <h4 id="h4index"> Drift Kings</h4>
+
+        <h5 id="h5index"> Keiichi Tsuchiya es un popular y habilidoso piloto de carreras profesional, conocido como el Drift Kings por su uso no tradicional del drifting en eventos de carreras sin deriva y su papel en la 
+            popularización del drifting como un deporte de motor. También es conocido por la conducción touge (paso de montaña). Tsuchiya conduce un auto Toyota AE86 Sprinter Trueno que se ha convertido en uno de los autos deportivos
+             más populares; el automóvil también se conoce como "Hachi-Roku" en Japón (hachi-roku significa "ocho seis" en Japonés); a su coche también se le llama "El Hachi que podría". Desde 1998, Tsuchiya fue consultor de la popular 
+             serie de manga y anime, Initial D, de la cual el personaje principal Takumi Fujiwara es un personaje que lo representa. También se desempeñó como coordinador de especialistas y especialista en Rápido y furioso: Reto Tokio (2006), 
+             donde también hizo un cameo.</h5>
+            </br></br>
+
+            <center><img src="img/dk.jpg"></center>
+
+
+            </br></br>
+
+            <center><button id="b1" onclick="alert ('Mantente de Lado que la pagina esta en construccion')">
+                Despues de la siguiente curva viene
+           
+            </button></center>
+            </br></br></br></br>
+
+             <!-- Aqui usamos el pie de pagina -->
+
+            <footer id="footer"> <center>Aythami Vargas Coruña 1º ASIR</center> </footer> 
+            
+        </br></br>
+        </body>
+    </html>    

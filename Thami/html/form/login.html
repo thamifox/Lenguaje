@@ -1,0 +1,69 @@
+<!DOCTYPE html>	
+    <html lang="es">
+
+<!-- Aquí tenemos el head de la página con el idioma, lenguaje utilizado y enlazado al estilo -->
+
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="charset=UTF-8" /> 
+        <meta name="description" content="DriftWorld">
+        <meta name="keywords" content="HTML5, CSS3">
+        <link rel="stylesheet" href="../css/estilos.css">
+            
+        <title>Drift World : Login</title>
+        
+         </head>
+
+<!-- Esto es el header, el cual contendrá el logo, el usuario, el registro, el inicio de sesión y el titulo -->
+
+         <header>
+
+            <div style="width:15%;float:left; background-color:rgb(255, 238, 0);padding-left: 1.5em; height: 4.2em;">
+                <img id="logo_cabecera"   style="width:9em;height:4em;" src="../img/logo4.jpg" alt="" > </img>
+              </div>
+            
+              <div style="width:55%;float:left;background-color:rgb(255, 238, 0);height: 4.2em;" >
+                <center><h1>Drift World : Login</h1></center>
+                </div>
+
+                <div style="background-color: rgb(255, 238, 0);margin-bottom: 0.5em;height: 4.2em;float:left;">
+                    <span id="usuarioLogeado"> <b>Usuario: </b>  Prueba  </span>
+                    <a href="login.html"<span> <b> Login</b></span></a>
+                    <a href="registro.html"<span> <b> Registro</b></span></a>
+                    <img id="btnLogout" onclick="signoutUser();"  src="../img/rcb.png" alt=""  style="width:2em;height: 2em;padding-top: 1.3em;padding-left: 1em;" > </img>
+                 </div>
+
+            </br> 
+             </br> 
+            </br> 
+
+         </header> 
+
+         <!-- Para este body le voy a dar un formato especial porque el texto no cosigo centrarlo bien asi que uso un id-->
+       
+         <body id="body">
+            </br> 
+
+            <div id="loginFormUI" style="display:flex; padding: 0.5em; justify-content: left;   ">  
+                <form name="loginForm"> 
+                    <label for="email" style="font-size:1.5em; font-weight:bold; color: rgb(255, 0, 0); padding: 1em;">Usuario (correo): </label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@gmail.com" required autofocus> <br><br><br>
+                    <label for="password" style="font-size:1.5em; font-weight:bold; color: rgb(255, 0, 0); padding: 1em;">Contraseña:</label>
+                    <input type="password" id="password"  name="password"  class="form-control" placeholder="Password" required>
+                    <input  type="submit" value="Enviar"  onclick="$('#usuarioLogeado').html($('#correo').val()); $('#btn_logout').show();$('#btn_login').hide();  $('#div_validacion').hide();"></input> 
+            
+               </form>
+            </div>
+
+        </br></br>
+
+            <a style="color:white; text-decoration: none; font-size: 1.5em;"href="../index.html">Volver a la pagina principal</a>
+               
+            </br></br></br>
+
+            <!-- Aquí usamos un id en el footer-->
+
+               <footer id="footer"> Aythami Vargas Coruña 1º ASIR </footer> 
+        </body>
+        </html>

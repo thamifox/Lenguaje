@@ -1,0 +1,185 @@
+<!DOCTYPE html>	
+    <html lang="es">
+
+<!-- Aquí tenemos el head de la página con el idioma, lenguaje utilizado y enlazado al estilo -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="charset=UTF-8" /> 
+  <meta name="description" content="DriftWorld">
+  <meta name="keywords" content="HTML5, CSS3">
+ 
+ <!-- vinculo a la pagina de estilos -->
+
+  <link rel="stylesheet" href="css/estilos.css">
+  
+<!-- Enlace a mi pagina de funciones-->
+
+  <script src="scripts/js/login.js"> </script>
+
+<!--Enlace al archivo jquery-->
+
+  <script src="scripts/jquery/jquery.js"></script>
+      
+  <title>Drift World</title>
+  
+   </head>
+
+      <body >
+
+          <script type="text/javascript">
+
+              console.log("Inicio de consola:"); 
+             
+          // funcion que se dispara cuando la pagina se ha terminado de cargar con Jquery
+
+              $(document).ready(function(){    
+                  $('#div_validacion').hide();
+                  $('#btn_logout').hide();
+                  $('#div_registro').hide();
+                  $('#eventos').hide();
+                  $('#descripcion').hide();
+                  alert('Pagina Lista');
+          
+                  var validado = checkCookie("username_thami");
+                  
+                  if(validado==true){
+                    $('#perfil').show();
+                  } else{
+                    $('#perfil').hide();
+                  }
+                    
+          
+              });
+                                      
+            </script>
+
+<!-- Esto es el header, el cual contendrá el logo, el usuario, el registro, el inicio de sesión y el botón (el cual tendrá un uso mas adelante) -->
+
+<header>
+
+  <div style="width:15%;float:left; background-color:rgb(255, 238, 0);padding-left: 1.5em; height: 4.2em;">
+      <img id="logo_cabecera"   style="width:9em;height:4em;" src="img/logo4.jpg" alt="" > </img>
+    </div>
+  
+    <div style="width:55%;float:left;background-color:rgb(255, 238, 0);height: 4.2em;" >
+      <center><h1 id="h11">Drift World</h1></center>
+      </div>
+
+      <div style="background-color: rgb(255, 238, 0);margin-bottom: 0.5em;height: 4.2em;float:left;">
+          <b>Usuario: </b>
+          <span id="usuarioLogeado"> Offline  </span>
+          <button id="b1" onclick=" $('#div_validacion').show(); "  alt="Iniciar sesiòn">
+             Login
+         
+          </button>
+          <button id="b1" onclick=" $('#div_registro').show(); "  alt="Registro">
+              Registro
+          
+           </button>
+          <!--<a href="form/registro.html"></a><span> <b> Registro</b></span></a>-->
+          <img  id="btn_login" src="img/rcb.png"   style="width:2em;height: 2em;padding-top: 1.3em;padding-left: 1em;" > </img>
+          <img  id="btn_logout" src="img/logo3.jpg" style="width:2em;height: 2em;padding-top: 1.3em;padding-left: 1em;" onclick="$('#usuarioLogeado').html('Offline'); $('#btn_logout').hide(); $('#btn_login').show();"  alt="Salir de la sesiòn" > </img> 
+       </div>
+
+       <!--Este es el formulario de inicio de sesion-->
+
+       <div id="div_validacion" >
+
+       <form name="loginForm"> 
+          <label for="email" style="font-size:1.5em; font-weight:bold; color: rgb(255, 0, 0); padding: 1em;">Usuario (correo): </label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="ejemplo@gmail.com" required autofocus> <br><br><br>
+          <label for="password" style="font-size:1.5em; font-weight:bold; color: rgb(255, 0, 0); padding: 1em;">Contraseña:</label>
+          <input type="password" id="password"  name="password"  class="form-control" placeholder="Password" required>
+          <input  type="submit" value="Enviar"  onclick="$('#usuarioLogeado').html($('#email').val()); $('#btn_logout').show();$('#btn_login').hide();  
+                                                           $('#div_validacion').hide();
+                                                           setCookie('username_thami', $('#email').val(), 1); 
+                                                          $('#perfil').show();"></input> 
+  
+     </form>
+  </div>
+
+   <!--Este es el formulario de Registro-->
+
+   <div id="div_registro">
+
+      <form action="/service.php">
+          <label style="color:white" for="nombre">Nombre de Usuario:</label><br><br>
+          <input type="text" id="nombre" name="nombre" value="Nombre"><br><br>
+          <label style="color:white" for="pass">Contraseña:</label><br><br>
+          <input type="password" id="pass" name="pass" value="Contraseña"><br><br>
+          <label style="color:white" for="correo">Correo Electronico:</label><br><br>
+          <input type="text" id="correo" name="correo" value="example@gmail.com"></br></br>
+          <label style="color:white" for="nombre">Nombre:</label><br><br>
+          <input type="text" id="nombre" name="nombre" value="Nombre"><br><br>
+          <label style="color:white" for="apellido">Apellidos:</label><br><br>
+          <input type="text" id="apellido" name="apellido" value="Apellidos"><br><br>
+          <label style="color:white" for="fecha">Fecha de Nacimiento:</label><br><br>
+          <input type="text" id="fecha" name="fecha" value="xx/xx/xxxx"><br><br>
+          <label style="color:white" for=”sexo”>Elija su sexo: </label><br><br>
+          <input type="checkbox" id="hombre" name="sexo" value="hombre">
+          <label style="color:white" for=”hombre”>Hombre</label>
+          <input type="checkbox" id=”mujer” name=”sexo” value=”mujer”>
+          <label style="color:white" for=”mujer”>Mujer</label><br><br>
+          <input type="checkbox" id=”terminos” name=”termino” value=”termino” required>
+          <label style="color:white" for=”termino”>Acepto los terminos de accesso</label><br><br>
+          <input type="checkbox" id=”publi” name=”publi” value=”publi”>
+          <label style="color:white" for=”publi”>Acepto que me llegue publicidad relacionionada</label><br><br>
+          <input type="submit" value="Registrarse">               
+        </form> 
+
+   </div>
+
+    </div>
+  
+  </br> </br> </br>   
+  
+     <!--Termina el Header  href="proyecto3.html" target="_blank" href="descripcion.html" target="_blank"-->
+
+</header>    
+            <body style="background: #000000;">
+
+              <table style="width:89%">
+                <colgroup>
+                  <col span="4" style="background-color: #ffee00">
+                </colgroup>
+                <th>Coche</th>
+                <th>Toyota</th>
+                <th>nissan</th>
+                <th>Honda</th>
+                  <tr>
+                      <td align="center">Modelo</td>
+                      <td align="center">AE86</td>
+                      <td align="center">Silvia S13</td>
+                      <td align="center">Civic EG</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td><img src="img/ae86.jpg" style="width:400px; height:200px;"> </td>
+                      <td><img src="img/s13.jpg" style="width:400px; height:200px;"> </td>
+                      <td><img src="img/eg.jpg" style="width:400px; height:200px;"> </td>
+
+                  </tr>
+                  <tr >
+                    <td colspan="4" align="center"><img src="img/d1logo.png" style="width:600px; height:80px;" ></td>
+
+                  </tr>
+
+              </table>
+
+              <h1 id="h4index">Enlace a la D1GP</h1>
+              <a style="color:white" href="https://d1gp.co.jp">Pinchame y vamos a D1GP</a>
+
+            </br></br>
+
+            <h2 style="background:#ffee00">-</h1>
+
+            <a style="color:white; text-decoration: none; font-size: 1.5em;"href="index.html">Volver a la pagina principal</a>
+
+          </br></br>
+
+          <footer id="footer"> Aythami Vargas Coruña 1º ASIR </footer> 
+            
+            </body>
+        </html>
